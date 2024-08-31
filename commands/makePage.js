@@ -9,23 +9,28 @@ export default function makePage(name, useClient, generateCss){
 
     const pageName = formatName(name);
     let dirPath = '';
-    
+    let filePath = '';
+    const fileExtension = isTypeScriptProject() ? 'tsx' : 'jsx';
+
     switch (isNextJsProject){
         case "app":
             dirPath = path.join(process.cwd(),'src','app',...name.split("/"));
+            filePath = path.join(dirPath, `page.${fileExtension}`);
             break;
         case "srcpages":
             dirPath = path.join(process.cwd(),'src','pages',...name.split("/"));
+            filePath = path.join(dirPath, `page.${fileExtension}`);
             break;
         case "pages":
             dirPath = path.join(process.cwd(),'pages',...name.split("/"));
+            filePath = path.join(dirPath, `page.${fileExtension}`);
             break;
         default:
         dirPath = path.join(process.cwd(),'src',...name.split("/"));
+        filePath = path.join(dirPath, `index.${fileExtension}`);
+
     }
 
-    const fileExtension = isTypeScriptProject() ? 'tsx' : 'jsx';
-    const filePath = path.join(dirPath, `${pageName}.${fileExtension}`);
     let content = '';
     
     if(useClient){
@@ -38,7 +43,7 @@ export default function makePage(name, useClient, generateCss){
 
     name = name.charAt(0).toUpperCase() + name.slice(1)
     content+= `
-const ${pageName} = ${!useClient ? 'async':''} ()=>{\n
+const ${pageName} = ${!useClient && isNextJsProject() ? 'async':''} ()=>{\n
     return (\n
         <div>${pageName} page</div>\n
     )            

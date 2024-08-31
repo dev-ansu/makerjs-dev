@@ -5,6 +5,12 @@ Este é um projeto básico para criação de páginas, componentes e contextos p
 - Next.JS (App Router e pages);
 - React.JS puro.
 
+## Características
+- Criar componente para Next.JS com ou sem `use client` (Next pages ou App Router)
+- Criar componentes para React.JS facilmente
+- Opção para gerar CSS module
+- Crie um React contexts com um comando simples
+
 ## Como usar
 
 1. Instale o pacote
@@ -32,3 +38,9 @@ maker make:page contatos --client
 maker make:page contatos --client --css
 ```
 
+## criar React context
+```
+maker make:context <name>
+```
+
+Acesse o projeto no github: https://github.com/dev-ansu/makerjs-dev

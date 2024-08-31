@@ -8,7 +8,7 @@ Este é um projeto básico para criação de páginas, componentes e contextos p
 ## Características
 - Criar componente para Next.JS com ou sem `use client` (Next pages ou App Router)
 - Criar componentes para React.JS facilmente
-- Opção para gerar CSS module
+- Opção para gerar CSS module ou SCSS module
 - Crie um React contexts com um comando simples
 
 ## Como usar
@@ -27,6 +27,7 @@ npx maker make:page contatos
 ```
 npx maker make:page contatos --css
 ```
+-- Se estiver usando SCSS, então troque --css por --scss
 
 4. Para projetos Next.JS é possível determinar client components
 ```

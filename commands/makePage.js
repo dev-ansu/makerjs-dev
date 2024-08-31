@@ -12,6 +12,8 @@ export default function makePage(name, useClient, generateCss){
     let filePath = '';
     const fileExtension = isTypeScriptProject() ? 'tsx' : 'jsx';
 
+    const isNextJs = isNextJsProject();
+
     switch (isNextJsProject){
         case "app":
             dirPath = path.join(process.cwd(),'src','app',...name.split("/"));
@@ -43,7 +45,7 @@ export default function makePage(name, useClient, generateCss){
 
     name = name.charAt(0).toUpperCase() + name.slice(1)
     content+= `
-const ${pageName} = ${!useClient && isNextJsProject() ? 'async':''} ()=>{\n
+const ${pageName} = ${!useClient && (isNextJs == 'app' || isNextJs == 'pages' || isNextJs == "srcpages") ? 'async':''} ()=>{\n
     return (\n
         <div>${pageName} page</div>\n
     )            

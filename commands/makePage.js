@@ -14,7 +14,7 @@ export default function makePage(name, useClient, generateCss){
 
     const isNextJs = isNextJsProject();
 
-    switch (isNextJsProject){
+    switch (isNextJs){
         case "app":
             dirPath = path.join(process.cwd(),'src','app',...name.split("/"));
             filePath = path.join(dirPath, `page.${fileExtension}`);

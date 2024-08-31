@@ -4,7 +4,7 @@ import path from "path";
 import { formatName, isTypeScriptProject, isNextJsProject } from "./utils.js";
 
 
-export default function makeComponent(name, generateCss){
+export default function makeComponent(name, generateCss, generateScss){
     try{
     
     const componentName = formatName(name);
@@ -19,6 +19,10 @@ export default function makeComponent(name, generateCss){
     
     if(generateCss){
         content+= `import styles from "./styles.module.css"\n`
+    }
+
+    if(generateScss){
+        content+= `import styles from "./styles.module.scss"\n`
     }
 
     content+= `
@@ -42,6 +46,13 @@ export default ${componentName};
     if(generateCss){
         console.log(`Creating CSS file:`)
         const cssFilePath = path.join(dirPath, "styles.module.css");
+        fs.writeFileSync(cssFilePath,'');
+        console.log(`CSS file created successfully!`)
+    }
+
+    if(generateScss){
+        console.log(`Creating SCSS file:`)
+        const cssFilePath = path.join(dirPath, "styles.module.scss");
         fs.writeFileSync(cssFilePath,'');
         console.log(`CSS file created successfully!`)
     }

@@ -4,7 +4,7 @@ import path from "path";
 import { formatName, isTypeScriptProject, isNextJsProject } from "./utils.js";
 
 
-export default function makePage(name, useClient, generateCss){
+export default function makePage(name, useClient, generateCss, generateScss){
     try{
 
     const pageName = formatName(name);
@@ -39,6 +39,10 @@ export default function makePage(name, useClient, generateCss){
         content+= `"use client";\n`;
     }
     
+    if(generateScss){
+        content+= `import styles from "./styles.module.scss"\n`
+    }
+
     if(generateCss){
         content+= `import styles from "./styles.module.css"\n`
     }
@@ -64,6 +68,13 @@ export default ${pageName};
     if(generateCss){
         console.log(`Creating CSS file:`)
         const cssFilePath = path.join(dirPath, "styles.module.css");
+        fs.writeFileSync(cssFilePath,'');
+        console.log(`CSS file created successfully!`)
+    }
+
+    if(generateScss){
+        console.log(`Creating SCSS file:`)
+        const cssFilePath = path.join(dirPath, "styles.module.scss");
         fs.writeFileSync(cssFilePath,'');
         console.log(`CSS file created successfully!`)
     }

@@ -16,23 +16,25 @@ program.command("make:page <name>")
     .description("Create a new Next.js page")
     .option('--client', 'Include "use client" directive')
     .option('--css', 'Generate a CSS file for the page')
+    .option("--scss", 'Generate a SCSS file for the page')
     .action((name, options) => {
-        if (!name && (options.css || options.client)) {
+        if (!name && (options.css || options.client || options.scss)) {
             console.error("Error: You must specify a page name when using --css.");
             process.exit(1);
         }
-        makePage(name, options.client, options.css);
+        makePage(name, options.client, options.css, options.scss);
     });
 
 program.command("make:component <name>")
     .description("Create a new React component")
     .option('--css', 'Generate a CSS file for the page')
+    .option("--scss", 'Generate a SCSS file for the page')
     .action( (name, options) => {
-        if (!name && options.css) {
+        if (!name && (options.css || options.scss)) {
             console.error("Error: You must specify a page name when using --css.");
             process.exit(1);
         }
-        makeComponent(name, options.css);
+        makeComponent(name, options.css, options.scss);
     })
 
 program.command("make:context <name>")

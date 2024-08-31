@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import fs from "fs-extra";
 import path from "path";
-import { formatName, isTypeScriptProject } from "./utils.js";
+import { formatName, isTypeScriptProject, isNextJsProject } from "./utils.js";
 
 
 export default function makeComponent(name, generateCss){
@@ -13,7 +13,9 @@ export default function makeComponent(name, generateCss){
     const filePath = path.join(dirPath, `index.${fileExtension}`);
     let content = '';
     
-    content+= `"use client";\n`;
+    if(isNextJsProject()){
+        content+= `"use client";\n`;
+    }
     
     if(generateCss){
         content+= `import styles from "./styles.module.css"\n`

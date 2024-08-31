@@ -22,7 +22,7 @@ export default function makeComponent(name, generateCss){
     content+= `
 const ${componentName} = ()=>{\n
     return (\n
-        <div>${componentName} page</div>\n
+        <div>${componentName} component</div>\n
     )            
 }\n\n
 export default ${componentName};

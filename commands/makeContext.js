@@ -24,7 +24,7 @@ export const ${contextName}Provider = ({children})=>{
 
     return(
         <${contextName}.Provider value={}>
-            {children}
+            {children}w
         </${contextName}.Provider>
     )
 }

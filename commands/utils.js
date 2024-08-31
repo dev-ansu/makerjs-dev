@@ -13,24 +13,25 @@ export const isTypeScriptProject = () => {
 
 export const isNextJsProject = () => {
     // Caminhos típicos de arquivos e diretórios do Next.js
-    const nextConfigPath = path.join(process.cwd(), 'next.config.js');
+    const nextConfigPathMjs = path.join(process.cwd(), 'next.config.mjs');
+    const nextConfigPathJs = path.join(process.cwd(), 'next.config.js');
     const pagesDirPath = path.join(process.cwd(), 'pages');
     const srcPagesDirPath = path.join(process.cwd(), 'src', 'pages');
+    const srcAppDirPath = path.join(process.cwd(), 'src', 'app');
 
-    if(!fs.existsSync(nextConfigPath)){
-        return false;
-    }
-
-    if(fs.existsSync(srcAppDirPath)){
-        return "app";
-    }
-    
-    if(fs.existsSync(srcPagesDirPath)){
-        return "srcpages"
-    }
-    
-    if(fs.existsSync(pagesDirPath)){
-        return "pages";
+    if(fs.existsSync(nextConfigPathMjs) || fs.existsSync(nextConfigPathJs)){
+        
+        if(fs.existsSync(srcAppDirPath)){
+            return "app";
+        }
+        
+        if(fs.existsSync(srcPagesDirPath)){
+            return "srcpages"
+        }
+        
+        if(fs.existsSync(pagesDirPath)){
+            return "pages";
+        }
     }
     
     // Verifica a existência dos arquivos e diretórios padrão

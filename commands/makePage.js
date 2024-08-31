@@ -21,11 +21,11 @@ export default function makePage(name, useClient, generateCss){
             break;
         case "srcpages":
             dirPath = path.join(process.cwd(),'src','pages',...name.split("/"));
-            filePath = path.join(dirPath, `page.${fileExtension}`);
+            filePath = path.join(dirPath, `index.${fileExtension}`);
             break;
         case "pages":
             dirPath = path.join(process.cwd(),'pages',...name.split("/"));
-            filePath = path.join(dirPath, `page.${fileExtension}`);
+            filePath = path.join(dirPath, `index.${fileExtension}`);
             break;
         default:
         dirPath = path.join(process.cwd(),'src',...name.split("/"));
@@ -45,7 +45,7 @@ export default function makePage(name, useClient, generateCss){
 
     name = name.charAt(0).toUpperCase() + name.slice(1)
     content+= `
-const ${pageName} = ${!useClient && (isNextJs == 'app' || isNextJs == 'pages' || isNextJs == "srcpages") ? 'async':''} ()=>{\n
+const ${pageName} = ${!useClient && isNextJs && isNextJs == 'app' ? 'async':''} ()=>{\n
     return (\n
         <div>${pageName} page</div>\n
     )            

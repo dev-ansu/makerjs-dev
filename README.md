@@ -15,7 +15,7 @@ Este é um projeto básico para criação de páginas, componentes e contextos p
 
 1. Instale o pacote
 ```
-npm install -g makerjs
+npm i -g makerjs-dev
 ```
 
 2. Abra o terminal na pasta do projeto e crie uma página

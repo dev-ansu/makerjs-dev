@@ -10,7 +10,7 @@ export default function makeComponent(name, generateCss){
     const componentName = formatName(name);
     const dirPath = path.join(process.cwd(),'src','components',...name.split("/"));
     const fileExtension = isTypeScriptProject() ? 'tsx' : 'jsx';
-    const filePath = path.join(dirPath, `${componentName}.${fileExtension}`);
+    const filePath = path.join(dirPath, `index.${fileExtension}`);
     let content = '';
     
     content+= `"use client";\n`;

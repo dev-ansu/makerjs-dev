@@ -15,32 +15,40 @@ Este é um projeto básico para criação de páginas, componentes e contextos p
 
 1. Instale o pacote
 ```
-npm install makerjs
+npm install -g makerjs
 ```
 
 2. Abra o terminal na pasta do projeto e crie uma página
 ```
-maker make:page contatos 
+npx maker make:page contatos 
 ```
 
 3. É possível gerar o CSS module da página ou componente
 ```
-maker make:page contatos --css
+npx maker make:page contatos --css
 ```
 
 4. Para projetos Next.JS é possível determinar client components
 ```
-maker make:page contatos --client
+npx maker make:page contatos --client
 ```
 
 5. Comando completo para Next.JS com client component e folha de estilo
 ```
-maker make:page contatos --client --css
+npx maker make:page contatos --client --css
 ```
 
 ## criar React context
 ```
-maker make:context <name>
+npx maker make:context <name>
 ```
+
+Você pode alterar a política de segurança para execução de scripts:
+
+1. Abra o PowerShell como administrador e execute:
+```
+Set-ExecutionPolicy RemoteSigned
+```
+
 
 Acesse o projeto no github: https://github.com/dev-ansu/makerjs-dev

@@ -13,7 +13,7 @@ export default function makePage(name, useClient, generateCss){
     const fileExtension = isTypeScriptProject() ? 'tsx' : 'jsx';
 
     const isNextJs = isNextJsProject();
-
+    console.log("Next js",isNextJs)
     switch (isNextJs){
         case "app":
             dirPath = path.join(process.cwd(),'src','app',...name.split("/"));

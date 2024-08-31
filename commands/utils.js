@@ -16,18 +16,23 @@ export const isNextJsProject = () => {
     const nextConfigPath = path.join(process.cwd(), 'next.config.js');
     const pagesDirPath = path.join(process.cwd(), 'pages');
     const srcPagesDirPath = path.join(process.cwd(), 'src', 'pages');
-    const srcAppDirPath = path.join(process.cwd(), 'src', 'app');
 
-    if(srcAppDirPath){
+    if(!fs.existsSync(nextConfigPath)){
+        return false;
+    }
+
+    if(fs.existsSync(srcAppDirPath)){
         return "app";
     }
-    if(srcPagesDirPath){
+    
+    if(fs.existsSync(srcPagesDirPath)){
         return "srcpages"
     }
-    if(pagesDirPath){
+    
+    if(fs.existsSync(pagesDirPath)){
         return "pages";
     }
     
     // Verifica a existência dos arquivos e diretórios padrão
-    return fs.existsSync(nextConfigPath) || fs.existsSync(pagesDirPath) || fs.existsSync(srcPagesDirPath) || fs.existsSync(srcAppDirPath);
+    return false;
 }

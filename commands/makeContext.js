@@ -4,7 +4,7 @@ import path from "path";
 import { formatName, isTypeScriptProject } from "./utils.js";
 
 
-export default function makePage(name){
+export default function makeContext(name){
     try{
 
     const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);

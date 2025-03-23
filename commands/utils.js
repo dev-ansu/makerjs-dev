@@ -15,11 +15,12 @@ export const isNextJsProject = () => {
     // Caminhos típicos de arquivos e diretórios do Next.js
     const nextConfigPathMjs = path.join(process.cwd(), 'next.config.mjs');
     const nextConfigPathJs = path.join(process.cwd(), 'next.config.js');
+    const nextConfigPathTs = path.join(process.cwd(), 'next.config.Ts');
     const pagesDirPath = path.join(process.cwd(), 'pages');
     const srcPagesDirPath = path.join(process.cwd(), 'src', 'pages');
     const srcAppDirPath = path.join(process.cwd(), 'src', 'app');
 
-    if(fs.existsSync(nextConfigPathMjs) || fs.existsSync(nextConfigPathJs)){
+    if(fs.existsSync(nextConfigPathMjs) || fs.existsSync(nextConfigPathJs) || fs.existsSync(nextConfigPathTs)){
         
         if(fs.existsSync(srcAppDirPath)){
             return "app";
